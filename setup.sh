@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo ./before-install.sh
+sudo scripts/preinstall.sh
 
 # Download Infrastructure agent
 wget https://download.newrelic.com/infrastructure_agent/binaries/linux/amd64/newrelic-infra_linux_1.48.4_amd64.tar.gz
@@ -17,4 +17,5 @@ sudo mv newrelic-infra.yml /etc/
 # Clean up
 rm newrelic-infra_linux_1.48.4_amd64.tar.gz
 rm -rf newrelic-infra/
-sudo ./postinst.sh
+
+sudo scripts/postinst.sh
