@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo
+echo Updating repositories...
 sudo apt update > /dev/null 2>&1
 sudo scripts/preinst.sh
 
@@ -29,3 +31,4 @@ rm newrelic-infra_linux_1.48.4_amd64.tar.gz
 rm -rf newrelic-infra/
 
 sudo scripts/postinst.sh
+echo
