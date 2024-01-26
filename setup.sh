@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo scripts/preinstall.sh
+sudo scripts/preinst.sh
 
 # Download Infrastructure agent
 wget https://download.newrelic.com/infrastructure_agent/binaries/linux/amd64/newrelic-infra_linux_1.48.4_amd64.tar.gz
