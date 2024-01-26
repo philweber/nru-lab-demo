@@ -1,11 +1,10 @@
 #!/bin/sh
 
-sudo apt update > /dev/null
+sudo apt update > /dev/null 2>$1
 sudo scripts/preinst.sh
 
 echo Downloading Infrastructure agent...
-wget https://download.newrelic.com/infrastructure_agent/binaries/linux/amd64/newrelic-infra_linux_1.48.4_amd64.tar.gz > /dev/null
-
+wget https://download.newrelic.com/infrastructure_agent/binaries/linux/amd64/newrelic-infra_linux_1.48.4_amd64.tar.gz > /dev/null 2>$1
 echo Extracting archive...
 tar -xf newrelic-infra_linux_1.48.4_amd64.tar.gz > /dev/null
 
@@ -19,10 +18,10 @@ sudo mkdir /var/log/newrelic-infra
 sudo mkdir /var/run/newrelic-infra
 
 echo Installing fluent-bit...
-wget https://github.com/newrelic/fluent-bit-package/releases/download/2.0.8/fluent-bit_2.0.8_ubuntu-jammy_amd64.deb > /dev/null
-sudo apt install ./fluent-bit_2.0.8_ubuntu-jammy_amd64.deb -y > /dev/null
-sudo wget -O /var/db/newrelic-infra/newrelic-integrations/logging/out_newrelic.so https://github.com/newrelic/newrelic-fluent-bit-output/releases/download/v1.19.1/out_newrelic-linux-amd64-1.19.1.so > /dev/null
-sudo wget -O /var/db/newrelic-infra/newrelic-integrations/logging/parsers.conf https://raw.githubusercontent.com/newrelic/fluent-bit-package/main/parsers.conf > /dev/null
+wget https://github.com/newrelic/fluent-bit-package/releases/download/2.0.8/fluent-bit_2.0.8_ubuntu-jammy_amd64.deb > /dev/null 2>$1
+sudo apt install ./fluent-bit_2.0.8_ubuntu-jammy_amd64.deb -y > /dev/null 2>$1
+sudo wget -O /var/db/newrelic-infra/newrelic-integrations/logging/out_newrelic.so https://github.com/newrelic/newrelic-fluent-bit-output/releases/download/v1.19.1/out_newrelic-linux-amd64-1.19.1.so > /dev/null 2>$1
+sudo wget -O /var/db/newrelic-infra/newrelic-integrations/logging/parsers.conf https://raw.githubusercontent.com/newrelic/fluent-bit-package/main/parsers.conf > /dev/null 2>$1
 
 echo Cleaning up
 rm fluent-bit_2.0.8_ubuntu-jammy_amd64.deb
